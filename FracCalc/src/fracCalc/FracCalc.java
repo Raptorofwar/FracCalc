@@ -68,6 +68,8 @@ public class FracCalc {
 		String evaluates = "";
 		int numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
 		int denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
+		int numerC = Integer.parseInt(c.substring(0, c.indexOf("/")));
+		int denomC = Integer.parseInt(c.substring(c.indexOf("/")+1));
 		
 		if(b.equals("*")){
 			
