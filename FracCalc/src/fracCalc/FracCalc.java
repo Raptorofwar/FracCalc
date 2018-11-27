@@ -5,13 +5,16 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	Scanner input = new Scanner(System.in);
+    	/*Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}
+		}*/
+    	String[] init = {"3/2", "1_1/2", "3_4/7", "23"};
+    	System.out.println(Arrays.toString(init));
+    	System.out.println(Arrays.toString(toImproperFrac(init)));
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -48,10 +51,12 @@ public class FracCalc {
 		for(int i = 0; i<a.length; i++) {
 			String converted = a[i];
 			int dividerPos = a[i].indexOf("_");
-			int vinculum = a[i].indexOf("/");
 			if(dividerPos>=0) {
+				int vinculum = a[i].indexOf("/");
 				converted = Integer.parseInt(a[i].substring(0, dividerPos))
-						* Integer.parseInt(a[i].substring(vinculum+1)) + "/" +
+						* Integer.parseInt(a[i].substring(vinculum+1)) + 
+						Integer.parseInt(a[i].substring(dividerPos+1, vinculum)) +
+						"/" +
 						a[i].substring(vinculum+1);
 			}
 			improperFracs[i]=converted;
@@ -61,7 +66,18 @@ public class FracCalc {
     
     public static String evaluate(String a, String b, String c) {
 		String evaluates = "";
+		int numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
+		int denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
 		
+		if(b.equals("*")){
+			
+		}else if(b.equals("/")) {
+			
+		}else if(b.equals("+")) {
+			
+		}else if (b.equals("-")){
+			
+		}
+		return evaluates;
 	}
-    
 }
