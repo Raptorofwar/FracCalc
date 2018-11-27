@@ -5,16 +5,13 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	/*Scanner input = new Scanner(System.in);
+    	Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}*/
-    	String[] init = {"3/2", "1_1/2", "3_4/7", "23"};
-    	System.out.println(Arrays.toString(init));
-    	System.out.println(Arrays.toString(toImproperFrac(init)));
+		}
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -29,7 +26,10 @@ public class FracCalc {
     public static String produceAnswer(String input) { 
     	//absolutely useless
     	String[] statement = input.split(" ");
-    	return statement[2];
+    	String second = statement[2];
+    	return "whole:" + second.substring(0, second.indexOf("_")) + 
+    			" numerator:" + second.substring(second.indexOf("_") + 1, second.indexOf("/")) + 
+    			" denominator:" + second.substring(second.indexOf("/")+1);
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
@@ -76,9 +76,9 @@ public class FracCalc {
 		}else if(b.equals("/")) {
 			evaluates = numerA * denomC + "/" + denomA * numerC;
 		}else if(b.equals("+")) {
-			
+			evaluates = (numerA * denomC + numerC * denomA) + "/" +  (denomA * denomC);
 		}else if (b.equals("-")){
-			
+			evaluates = (numerA * denomC - numerC * denomA) + "/" +  (denomA * denomC);
 		}
 		return evaluates;
 	}
