@@ -72,9 +72,9 @@ public class FracCalc {
 		int denomC = Integer.parseInt(c.substring(c.indexOf("/")+1));
 		
 		if(b.equals("*")){
-			
+			evaluates = numerA * numerC + "/" + denomA * denomC;
 		}else if(b.equals("/")) {
-			
+			evaluates = numerA * denomC + "/" + denomA * numerC;
 		}else if(b.equals("+")) {
 			
 		}else if (b.equals("-")){
