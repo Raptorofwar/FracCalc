@@ -26,10 +26,28 @@ public class FracCalc {
     public static String produceAnswer(String input) { 
     	//absolutely useless
     	String[] statement = input.split(" ");
+    	String whole1 = "0";
+    	String num1 = "0";
+    	String denom1 = "1";
+    	String whole2 = "0";
+    	String num2 = "0";
+    	String denom2 = "1";
+    	String first = statement[0];
     	String second = statement[2];
-    	return "whole:" + second.substring(0, second.indexOf("_")) + 
-    			" numerator:" + second.substring(second.indexOf("_") + 1, second.indexOf("/")) + 
-    			" denominator:" + second.substring(second.indexOf("/")+1);
+    	int underscore1 = first.indexOf("_");
+    	int slash1 = first.indexOf("/");
+    	int underscore2 = second.indexOf("_");
+    	int slash2 = second.indexOf("/");
+    	
+    	whole1 = first.substring(0, first.indexOf("_"));
+    	num1 = first.substring(first.indexOf("_") + 1, first.indexOf("/"));
+    	denom1 = first.substring(first.indexOf("/")+1);
+    	whole2 = second.substring(0, second.indexOf("_"));
+    	num2 = second.substring(second.indexOf("_") + 1, second.indexOf("/"));
+    	denom2 = second.substring(second.indexOf("/")+1);
+    	return "whole:" + whole2 + 
+    			" numerator:" + num2 + 
+    			" denominator:" + denom2;
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
