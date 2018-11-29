@@ -119,4 +119,10 @@ public class FracCalc {
 		}
 		return evaluates;
 	}
+    
+    public static String toMixedNum(String num) {
+    	int numerator = Integer.parseInt(num.substring(0, num.indexOf("/")));
+    	int denominator = Integer.parseInt(num.substring(num.indexOf("/")+1));
+    	return
+    }
 }
