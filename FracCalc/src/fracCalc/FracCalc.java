@@ -34,17 +34,36 @@ public class FracCalc {
     	String denom2 = "1";
     	String first = statement[0];
     	String second = statement[2];
+    	
     	int underscore1 = first.indexOf("_");
     	int slash1 = first.indexOf("/");
     	int underscore2 = second.indexOf("_");
     	int slash2 = second.indexOf("/");
     	
-    	whole1 = first.substring(0, first.indexOf("_"));
-    	num1 = first.substring(first.indexOf("_") + 1, first.indexOf("/"));
-    	denom1 = first.substring(first.indexOf("/")+1);
-    	whole2 = second.substring(0, second.indexOf("_"));
-    	num2 = second.substring(second.indexOf("_") + 1, second.indexOf("/"));
-    	denom2 = second.substring(second.indexOf("/")+1);
+    	if(slash1>=0) {
+    		denom1 = first.substring(slash1 + 1);
+    		if(underscore1>=0) {
+    			whole1 = first.substring(0, underscore1);
+    			num1 = first.substring(underscore1 + 1, slash1);
+    		}else {
+    			num1 = first.substring(0, slash1);
+    		}
+    	}else {
+    		whole1 = first;
+    	}
+    	
+    	if(slash2>=0) {
+    		denom2 = second.substring(slash2 + 1);
+    		if(underscore2>=0) {
+    			whole2 = second.substring(0, underscore2);
+    			num2 = second.substring(underscore2 + 1, slash2);
+    		}else {
+    			num2 = second.substring(0, slash2);
+    		}
+    	}else {
+    		whole2 = second;
+    	}
+    	
     	return "whole:" + whole2 + 
     			" numerator:" + num2 + 
     			" denominator:" + denom2;
