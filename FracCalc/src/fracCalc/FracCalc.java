@@ -101,7 +101,7 @@ public class FracCalc {
 		return improperFracs;
 	}
     
-    public static String evaluate(String a, String b, String c) {
+    public static String operation(String a, String b, String c) {
 		String evaluates = "";
 		int numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
 		int denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
@@ -123,6 +123,10 @@ public class FracCalc {
     public static String toMixedNum(String num) {
     	int numerator = Integer.parseInt(num.substring(0, num.indexOf("/")));
     	int denominator = Integer.parseInt(num.substring(num.indexOf("/")+1));
-    	return
+    	return numerator / denominator + "_" + numerator % denominator + "/" + denominator;
+    }
+    
+    public static String evaluate(String[] expression) {
+    	
     }
 }
