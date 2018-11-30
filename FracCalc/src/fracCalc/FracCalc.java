@@ -5,13 +5,16 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	Scanner input = new Scanner(System.in);
+    	/*Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}
+		}*/
+    	//String[] temp = {"1_3/4", "+", "2_3/5", "*", "5"};
+    	//System.out.println(evaluate(temp));
+    	System.out.println(operation("1_3/4", "+", "2/5"));
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -71,8 +74,8 @@ public class FracCalc {
     
     // TODO: Fill in the space below with any helper methods that you think you will need
     
-    public static int[] remove(int[] arr, int idx) {
-		int[] removed = new int[arr.length-1];
+    public static String[] remove(String[] arr, int idx) {
+		String[] removed = new String[arr.length-1];
 		int count=0;
 		for(int i=0; i<arr.length; i++) {
 			if(i!=idx) {
@@ -103,6 +106,9 @@ public class FracCalc {
     
     public static String operation(String a, String b, String c) {
 		String evaluates = "";
+		
+		//convert to improper fracs? fix below
+    	
 		int numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
 		int denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
 		int numerC = Integer.parseInt(c.substring(0, c.indexOf("/")));
@@ -127,6 +133,23 @@ public class FracCalc {
     }
     
     public static String evaluate(String[] expression) {
-    	
+    	String[] evaluating = expression;
+    	for(int i = 0; i<evaluating.length; i++) {
+    		if(evaluating[i].equals("*")||evaluating[i].equals("/")) {
+    			evaluating[i-1] = operation(evaluating[i-1], evaluating[i], evaluating[i+1]);
+    			evaluating = remove(evaluating, i);
+    			evaluating = remove(evaluating, i);
+    			i = 0;
+    		}
+    	}
+    	for(int i = 0; i<evaluating.length; i++) {
+    		if(evaluating[i].equals("-")||evaluating[i].equals("+")) {
+    			evaluating[i-1] = operation(evaluating[i-1], evaluating[i], evaluating[i+1]);
+    			evaluating = remove(evaluating, i);
+    			evaluating = remove(evaluating, i);
+    			i = 0;
+    		}
+    	}
+    	return evaluating[0];
     }
 }
