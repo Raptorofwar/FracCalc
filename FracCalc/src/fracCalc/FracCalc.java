@@ -12,9 +12,8 @@ public class FracCalc {
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
 		}*/
-    	//String[] temp = {"1_3/4", "+", "2_3/5", "*", "5"};
-    	//System.out.println(evaluate(temp));
-    	System.out.println(operation("1_3/4", "+", "2/5"));
+    	String[] temp = {"1_3/4", "+", "2_3/5", "*", "5"};
+    	System.out.println(evaluate(temp));
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
