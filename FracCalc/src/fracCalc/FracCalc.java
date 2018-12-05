@@ -5,15 +5,13 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	/*Scanner input = new Scanner(System.in);
+    	Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}*/
-    	String[] temp = {"1_3/4", "+", "2_3/5", "*", "5"};
-    	System.out.println(evaluate(temp));
+		}
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -27,8 +25,31 @@ public class FracCalc {
     
     public static String produceAnswer(String input) { 
     	int posStartParen = -1;
-    	int postFinParen = -1;
+    	int posFinParen = -1;
     	String[] expression = input.split(" ");
+    	int position = 0;
+    	do {
+    		if(expression[position].equals("(")) {
+    			posStartParen = position;
+    		}else if(expression[position].equals("")) {
+    			posFinParen = position;
+    		}
+    		if(posStartParen >= 0 || posFinParen >= 0) {
+    			int length = posFinParen - posStartParen - 1;
+    			String[] miniArray = new String[length];
+    			for(int i = posStartParen + 1; i < posFinParen; i++) {
+    				miniArray[i - posStartParen - 1] = expression[i];
+    			}
+    			expression[posStartParen] = evaluate(miniArray);
+    			for(int i = posStartParen+1; i <= posFinParen; i++) {
+    				remove(expression, posStartParen+1);
+    			}
+    			position = 0;
+    			posStartParen = -1;
+    			posFinParen = -1;
+    		}
+    	}while(position < expression.length);
+    	return toMixedNum(evaluate(expression));
     }
     
     // TODO: Fill in the space below with any helper methods that you think you will need
