@@ -98,11 +98,15 @@ public class FracCalc {
 		if(a.indexOf("/") >= 0) {
 			numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
 			denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
+		}else {
+			numerA = Integer.parseInt(a);
 		}
     	
 		if(c.indexOf("/") >= 0) {
 			numerC = Integer.parseInt(c.substring(0, c.indexOf("/")));
 			denomC = Integer.parseInt(c.substring(c.indexOf("/")+1));
+		}else {
+			numerC = Integer.parseInt(c);
 		}
 		
 		if(b.equals("*")){
