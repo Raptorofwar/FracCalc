@@ -5,13 +5,15 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	Scanner input = new Scanner(System.in);
+    	/*Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}
+		}*/
+    	String[] array = {"1","+","2"};
+    	System.out.println(evaluate(array));
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -88,11 +90,20 @@ public class FracCalc {
 		String evaluates = "";
 		
 		//convert to improper fracs? fix below
+		int numerA = 0;
+		int denomA = 1;
+		int numerC = 0;
+		int denomC = 1;
+		
+		if(a.indexOf("/") >= 0) {
+			numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
+			denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
+		}
     	
-		int numerA = Integer.parseInt(a.substring(0, a.indexOf("/")));
-		int denomA = Integer.parseInt(a.substring(a.indexOf("/")+1));
-		int numerC = Integer.parseInt(c.substring(0, c.indexOf("/")));
-		int denomC = Integer.parseInt(c.substring(c.indexOf("/")+1));
+		if(c.indexOf("/") >= 0) {
+			numerC = Integer.parseInt(c.substring(0, c.indexOf("/")));
+			denomC = Integer.parseInt(c.substring(c.indexOf("/")+1));
+		}
 		
 		if(b.equals("*")){
 			evaluates = numerA * numerC + "/" + denomA * denomC;
