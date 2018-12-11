@@ -5,15 +5,13 @@ import java.util.*;
 public class FracCalc {
 
     public static void main(String[] args) {
-    	/*Scanner input = new Scanner(System.in);
+    	Scanner input = new Scanner(System.in);
 		String command = "";
 		while(!command.equals("quit")) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
 			System.out.println(produceAnswer(command));
-		}*/
-    	String[] array = {"1","+","2"};
-    	System.out.println(evaluate(array));
+		}
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -36,7 +34,7 @@ public class FracCalc {
     		}else if(expression[position].equals("")) {
     			posFinParen = position;
     		}
-    		if(posStartParen >= 0 || posFinParen >= 0) {
+    		if(posStartParen >= 0 && posFinParen >= 0) {
     			int length = posFinParen - posStartParen - 1;
     			String[] miniArray = new String[length];
     			for(int i = posStartParen + 1; i < posFinParen; i++) {
