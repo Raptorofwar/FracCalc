@@ -7,11 +7,14 @@ public class FracCalc {
     public static void main(String[] args) {
     	Scanner input = new Scanner(System.in);
 		String command = "";
-		while(!command.equals("quit")) {
+		while(true) {
 	    	System.out.print("Calculate: ");
 			command = input.nextLine();
+			if(command.equals("quit")) {
+				break;
+			}
 			System.out.println(produceAnswer(command));
-		}
+			}
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -26,12 +29,12 @@ public class FracCalc {
     public static String produceAnswer(String input) { 
     	int posStartParen = -1;
     	int posFinParen = -1;
-    	String[] expression = input.split(" ");
+    	String[] expression = toImproperFrac(input.split(" "));
     	int position = 0;
     	do {
     		if(expression[position].equals("(")) {
     			posStartParen = position;
-    		}else if(expression[position].equals("")) {
+    		}else if(expression[position].equals(")")) {
     			posFinParen = position;
     		}
     		if(posStartParen >= 0 && posFinParen >= 0) {
@@ -48,6 +51,7 @@ public class FracCalc {
     			posStartParen = -1;
     			posFinParen = -1;
     		}
+    		position++;
     	}while(position < expression.length);
     	return toMixedNum(evaluate(expression));
     }
@@ -55,6 +59,9 @@ public class FracCalc {
     // TODO: Fill in the space below with any helper methods that you think you will need
     
     public static String[] remove(String[] arr, int idx) {
+    	
+    	// removes element in array arr at index idx
+    	
 		String[] removed = new String[arr.length-1];
 		int count=0;
 		for(int i=0; i<arr.length; i++) {
@@ -67,6 +74,9 @@ public class FracCalc {
 	}
 	
     public static String[] toImproperFrac(String[] a) {
+    	
+    	//changes an array's mixed numbers fractions to improper fractions
+    	
     	String[] improperFracs = new String[a.length];
 		for(int i = 0; i<a.length; i++) {
 			String converted = a[i];
