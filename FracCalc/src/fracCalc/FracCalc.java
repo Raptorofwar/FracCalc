@@ -79,17 +79,19 @@ public class FracCalc {
     	
     	String[] improperFracs = new String[a.length];
 		for(int i = 0; i<a.length; i++) {
-			String converted = a[i];
+			String term = a[i];
 			int dividerPos = a[i].indexOf("_");
 			if(dividerPos>=0) {
 				int vinculum = a[i].indexOf("/");
-				converted = Integer.parseInt(a[i].substring(0, dividerPos))
-						* Integer.parseInt(a[i].substring(vinculum+1)) + 
-						Integer.parseInt(a[i].substring(dividerPos+1, vinculum)) +
-						"/" +
-						a[i].substring(vinculum+1);
+				int whole = Integer.parseInt(a[i].substring(0, dividerPos));
+				int denom = Integer.parseInt(a[i].substring(vinculum+1));
+				int num = Integer.parseInt(a[i].substring(dividerPos+1, vinculum));
+				if(whole<0) {
+					num *= -1;
+				}
+				term = whole * denom + num + "/" + denom;
 			}
-			improperFracs[i]=converted;
+			improperFracs[i]=term;
 		}
 		return improperFracs;
 	}
@@ -129,10 +131,16 @@ public class FracCalc {
 		return evaluates;
 	}
     
-    public static String toMixedNum(String num) {
-    	int numerator = Integer.parseInt(num.substring(0, num.indexOf("/")));
-    	int denominator = Integer.parseInt(num.substring(num.indexOf("/")+1));
-    	return numerator / denominator + "_" + numerator % denominator + "/" + denominator;
+    public static String toMixedNum(String fraction) {
+    	int num = Integer.parseInt(fraction.substring(0, fraction.indexOf("/")));
+    	int denom = Integer.parseInt(fraction.substring(fraction.indexOf("/")+1));
+    	int whole = num / denom;
+    	int newNum = num % denom;
+    	
+    	// think about what you need to make a real fraction
+    	
+    	String mixedNum = "";
+    	return mixedNum;
     }
     
     public static String evaluate(String[] expression) {
