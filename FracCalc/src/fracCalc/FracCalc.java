@@ -137,7 +137,18 @@ public class FracCalc {
     	int whole = num / denom;
     	int newNum = num % denom;
     	
+    	if(gcf(newNum, denom) > 1) {
+    		int comFac = gcf(newNum, denom);
+    		newNum/=comFac;
+    		denom/=comFac;
+    	}
+    	
     	// think about what you need to make a real fraction
+    	
+    	if(denom < 0) {
+    		denom*=-1;
+    		newNum*=-1;
+    	}
     	
     	String mixedNum = "";
     	if(num == 0) {
@@ -148,6 +159,8 @@ public class FracCalc {
 			mixedNum = whole + "";
 		}else if(whole < 0 && newNum < 0) {
 			mixedNum = whole + "_" + newNum * -1 + "/" + denom;
+		}else {
+			mixedNum = whole + "_" + newNum + "/" + denom;
 		}
     	return mixedNum;
     }
@@ -172,4 +185,37 @@ public class FracCalc {
     	}
     	return evaluating[0];
     }
+
+    public static int gcf(int x, int y) {
+	
+	//input two ints, returns greatest common factor
+	
+		int placeholder=y;
+		int newx=x;
+		int newy=y;
+		while(newx!=0&&newy!=0) {
+			placeholder=newx%newy;
+			newx=newy;
+	 		newy=placeholder;
+		}
+		if(newx==0) {
+			return absValue(newy);
+		}else {
+		 	return absValue(newx);
+		}
+	}
+    
+    public static int absValue(int absolute) {
+	
+    	//returns absolute values of two ints
+    	//having methods that only work with ints and methods that only work with doubles
+    	//is confusing as all ****
+    	
+    	if (absolute<0) {
+    		return absolute*-1;
+    	}else {
+    		return absolute;
+    	}
+    }
+
 }
