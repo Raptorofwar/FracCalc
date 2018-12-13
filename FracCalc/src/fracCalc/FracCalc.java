@@ -140,6 +140,15 @@ public class FracCalc {
     	// think about what you need to make a real fraction
     	
     	String mixedNum = "";
+    	if(num == 0) {
+    		mixedNum = "0";
+    	}else if(whole == 0) {
+    		mixedNum = newNum + "/" + denom;
+		}else if(newNum == 0) {
+			mixedNum = whole + "";
+		}else if(whole < 0 && newNum < 0) {
+			mixedNum = whole + "_" + newNum * -1 + "/" + denom;
+		}
     	return mixedNum;
     }
     
