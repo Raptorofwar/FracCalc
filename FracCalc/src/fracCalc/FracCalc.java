@@ -27,6 +27,9 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     
     public static String produceAnswer(String input) { 
+    	
+    	//takes in an expression, produces an answer
+    	
     	int posStartParen = -1;
     	int posFinParen = -1;
     	String[] expression = toImproperFrac(input.split(" "));
@@ -99,7 +102,8 @@ public class FracCalc {
     public static String operation(String a, String b, String c) {
 		String evaluates = "";
 		
-		//convert to improper fracs? fix below
+		//Evaluates "a b c" where a and c are terms and b is an operation
+		
 		int numerA = 0;
 		int denomA = 1;
 		int numerC = 0;
@@ -132,6 +136,10 @@ public class FracCalc {
 	}
     
     public static String toMixedNum(String fraction) {
+    	
+    	//changes one improper fraction into a mixed number (among other things to
+    	//refine the final answer)
+    	
     	int num = Integer.parseInt(fraction.substring(0, fraction.indexOf("/")));
     	int denom = Integer.parseInt(fraction.substring(fraction.indexOf("/")+1));
     	int whole = num / denom;
@@ -166,6 +174,9 @@ public class FracCalc {
     }
     
     public static String evaluate(String[] expression) {
+    	
+    	//takes in an expression in an array, returns the final result as an improper frac
+    	
     	String[] evaluating = expression;
     	for(int i = 0; i<evaluating.length; i++) {
     		if(evaluating[i].equals("*")||evaluating[i].equals("/")) {
@@ -208,8 +219,6 @@ public class FracCalc {
     public static int absValue(int absolute) {
 	
     	//returns absolute values of two ints
-    	//having methods that only work with ints and methods that only work with doubles
-    	//is confusing as all ****
     	
     	if (absolute<0) {
     		return absolute*-1;
